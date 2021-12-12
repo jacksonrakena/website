@@ -13,8 +13,8 @@ const Home: NextPage<HomeStaticProps> = (props: HomeStaticProps) => {
 
 const Header = () => {
   return (
-    <div className="pt-6">
-      <div className="text-2xl font-bold">
+    <div className="py-6">
+      <div className="text-3xl font-bold">
         jackson's notes on technology, and the world
       </div>
       <div>notes on a puzzling world from Wellington, New Zealand.</div>
@@ -25,7 +25,7 @@ const Header = () => {
 
 const LatestPosts = (props: { posts: Post[] }) => {
   return (
-    <div className="pt-4">
+    <div className="pt-16">
       <div className="inline-block text-2xl font-bold bg-black px-4 py-2 text-white">
         latest posts
       </div>
