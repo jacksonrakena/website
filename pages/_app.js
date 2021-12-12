@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }) {
           href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;700;900&display=swap"
           rel="stylesheet"
         />
+        <title>jackson's notes</title>
       </Head>
       <Component {...pageProps} />
     </>
