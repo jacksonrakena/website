@@ -41,5 +41,9 @@ export async function getAllPosts(): Promise<Post[]> {
       summary: meta.data.summary,
     });
   }
-  return posts;
+  return posts.sort((a, b) => {
+    return (
+      Number.parseInt(b.slug.slice(0, 2)) - Number.parseInt(a.slug.slice(0, 2))
+    );
+  });
 }
