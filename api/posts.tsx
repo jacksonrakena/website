@@ -13,7 +13,7 @@ export interface Post {
 export type PostWithContent = Post & { content: MDXRemoteSerializeResult };
 
 export async function getPostBySlug(slug: string): Promise<PostWithContent> {
-  const fileContent = await import(`../_posts/${slug}.md`);
+  const fileContent = await import(`../_posts/${slug}.mdx`);
   const meta = matter(fileContent.default);
   const content = await serialize(meta.content);
   return {
@@ -27,14 +27,14 @@ export async function getPostBySlug(slug: string): Promise<PostWithContent> {
 }
 
 export async function getAllPosts(): Promise<Post[]> {
-  const context = require.context("../_posts", false, /\.md$/);
+  const context = require.context("../_posts", false, /\.mdx$/);
   const posts: Post[] = [];
   for (const key of context.keys()) {
     const post = key.slice(2);
     const content = await import(`../_posts/${post}`);
     const meta = matter(content.default);
     posts.push({
-      slug: post.replace(".md", ""),
+      slug: post.replace(".mdx", ""),
       title: meta.data.title,
       date: meta.data.date,
       tag: meta.data.tag,

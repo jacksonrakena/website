@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import {
   getAllPosts,
@@ -7,11 +7,13 @@ import {
   PostWithContent,
 } from "../../api/posts";
 
+import "./post.module.css";
+
 export default function GetPostSlug(props: { post: PostWithContent }) {
   return (
     <div
       style={{ marginLeft: "auto", marginRight: "auto", maxWidth: "90%" }}
-      className="pt-6"
+      className="pt-6 prose"
     >
       <a
         href="/"
@@ -34,11 +36,27 @@ export default function GetPostSlug(props: { post: PostWithContent }) {
         back
       </a>
       <div className="pt-2">
-        <div className="text-2xl font-bold">{props.post.title}</div>
+        <div className="text-2xl font-semibold">{props.post.title}</div>
+
+        <div className="not-prose my-2 p-3 flex border-2">
+          <img
+            className="rounded-full"
+            width="42"
+            height="42"
+            style={{ marginTop: "auto", marginBottom: "auto" }}
+            src="https://d.lu.je/avatar/255950165200994307"
+          />
+          <div className="ml-4">
+            <div>
+              <span className="font-semibold text-md">Jackson Rakena</span>
+            </div>
+            <div className="text-sm">{props.post.date}</div>
+          </div>
+        </div>
       </div>
-      <div className="pt-6">
+      <article className="pt-2">
         <MDXRemote {...props.post.content} />
-      </div>
+      </article>
     </div>
   );
 }
@@ -49,7 +67,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async (context) => {
   let posts = await getAllPosts();
   let paths = posts.map((post) => ({
     params: { slug: post.slug },
@@ -58,4 +76,4 @@ export async function getStaticPaths() {
     paths: paths,
     fallback: false,
   };
-}
+};
