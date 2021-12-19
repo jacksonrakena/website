@@ -1,5 +1,5 @@
 # Jackson's website (mostly)
-Currently, this repo is the backbone for [my blog (blog.jacksonrakena.com](https://blog.jacksonrakena.com), using a fairly standard Next.js setup using MDX files.
+Currently, this repo is the backbone for [my blog (blog.jacksonrakena.com)](https://blog.jacksonrakena.com), using a fairly standard Next.js setup using MDX files.
 
 ### Structure
 `_posts/*.mdx` -> blog post content  
